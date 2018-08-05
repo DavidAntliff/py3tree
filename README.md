@@ -6,16 +6,25 @@ A reimplementation of [i3tree](https://github.com/sciurus/i3tree) in Python, usi
 
 i3tree is a program written by sciurus in Perl for the i3 tiling window manager.
 
-This project is a reimplementation of
-this tool in what I consider to be a better language. Also, I can extend it without forcing myself to relearn Perl.
+This project is a reimplementation of this tool in Python.
 
 # Usage
 
-TODO.
+Show the entire tree, including all workspaces:
 
-# Examples
+    $ py3tree
 
-TODO.
+Show the tree for just the workspace named "1":
+
+    $ py3tree -w 1
+
+Show the tree for both the workspace named "1" and the workspace named "two":
+
+    $ py3tree -w 1 two
+
+Show the tree for the current focused workspace:
+
+    $ py3tree -f
 
 # Acknowledgements
 
