@@ -8,6 +8,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--compat", action="store_true", help="Output compatible with i3tree")
     parser.add_argument("-w", "--workspace", type=str, nargs="*", help="Workspace to display")
+    parser.add_argument("-f", "--focused", action="store_true", help="Display info for focused workspace")
     args = parser.parse_args()
 
     i3 = i3ipc.Connection()
@@ -16,8 +17,21 @@ def main():
     if args.compat:
         i3tree_walk_tree(tree, 0)
     else:
+        if args.focused:
+            current_workspace = find_focused_workspace(i3).name
+            args.workspace = [current_workspace] if not args.workspace else \
+                args.workspace + [current_workspace]
+
         walk_tree(tree, 0, filter_workspaces=args.workspace,
                   mute=args.workspace is not None)
+
+
+def find_focused_workspace(con):
+    workspaces = con.get_workspaces()
+    for workspace in workspaces:
+        if workspace.visible and workspace.focused:
+            return workspace
+    return None
 
 
 def i3tree_display_node(description, depth):
