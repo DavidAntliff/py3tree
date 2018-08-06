@@ -8,6 +8,10 @@ i3tree is a program written by sciurus in Perl for the i3 tiling window manager.
 
 This project is a reimplementation of this tool in Python.
 
+# Installation
+
+    $ pip install --user py3tree
+
 # Usage
 
 Show the entire tree, including all workspaces:

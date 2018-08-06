@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py3tree",
-    version="0.0.2",
+    version="0.0.3",
     author="David Antliff",
     author_email="david.antliff@gmail.com",
     description="Display the i3 tree for the current or all workspaces",
