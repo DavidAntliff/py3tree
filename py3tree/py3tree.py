@@ -58,7 +58,7 @@ def i3tree_walk_tree(node, depth):
 
     if type == "con":
         if orientation == "none":
-            if name == "content" or not name.startswith("i3bar"):
+            if name == "content" or (name and not name.startswith("i3bar")):
                 depth = i3tree_display_node("Window {name}".format(name=name), depth)
         else:
             depth = i3tree_display_node("Split ({layout} - {orientation})".format(layout=layout,
@@ -97,7 +97,7 @@ def walk_tree(node, depth, filter_workspaces=None, mute=False):
 
         if type_ == "con":
             if orientation == "none":
-                if name == "content" or not name.startswith("i3bar"):
+                if name == "content" or (name and not name.startswith("i3bar")):
                     depth = display_node("Window {name}".format(name=name), depth)
             else:
                 depth = display_node("Split ({layout} - {orientation})".format(layout=layout,
